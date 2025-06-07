@@ -9,7 +9,8 @@ app = FastAPI()
 # Enable CORS for frontend dev server
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["http://localhost:5173", #local dev
+                   "https://recipe-buddy-frontend.onrender.com"], #production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

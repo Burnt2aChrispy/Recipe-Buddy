@@ -1,9 +1,0 @@
-fastapi
-uvicorn
-sqlalchemy
-databases[postgresql]
-python-dotenv
-sqlalchemy
-asyncpg
-databases
-

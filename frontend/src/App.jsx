@@ -1,23 +1,22 @@
-import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Sidebar from './components/Sidebar';
+import Recipes from './pages/Recipes';
+import ShoppingList from './pages/ShoppingList';
+import Profile from './pages/Profile';
 
-const API_URL = import.meta.env.VITE_API_URL;
-
-function App() {
-  const [message, setMessage] = useState('Loading...');
-
-  useEffect(() => {
-    fetch(`${API_URL}/`)
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message))
-      .catch((err) => setMessage("Failed to connect to backend"));
-  }, []);
-
+export default function App() {
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>Recipe Tracker</h1>
-      <h1>{message}</h1>
-    </div>
+    <Router>
+      <div className="flex min-h-screen">
+        <Sidebar />
+        <div className="flex-1 p-6">
+          <Routes>
+            <Route path="/" element={<Recipes />} />
+            <Route path="/shopping" element={<ShoppingList />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
-
-export default App;

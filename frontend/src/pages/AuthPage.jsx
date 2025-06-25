@@ -52,9 +52,6 @@ export default function AuthPage() {
         <h1 className="text-3xl font-bold mb-2 text-center">
           {authType === 'login' ? 'Sign In' : 'Sign Up'}
         </h1>
-        <p className="text-gray-500 mb-6 text-center">
-          {authType === 'login' ? 'Enter your details to sign in' : 'Start your journey'}
-        </p>
 
         <form onSubmit={handleAuth} className="space-y-4">
           <div>

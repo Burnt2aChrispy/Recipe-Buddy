@@ -1,5 +1,7 @@
 import { supabase } from './supabaseClient';
 
+const redirectTo = window.location.origin;
+
 // Sign up new user
 export async function signUp(email, password) {
   const { data, error } = await supabase.auth.signUp({ email, password });
@@ -32,6 +34,9 @@ export function onAuthStateChange(callback) {
 export async function signInWithGoogle() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
+    options: {
+      redirectTo: redirectTo,
+    },
   });
   return { data, error };
 }
@@ -40,6 +45,9 @@ export async function signInWithGoogle() {
 export async function signInWithMicrosoft() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'azure',
+    options: {
+      redirectTo: redirectTo,
+    },
   });
   return { data, error };
 }
@@ -48,6 +56,9 @@ export async function signInWithMicrosoft() {
 export async function signInWithDiscord() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'discord',
+    options: {
+      redirectTo: redirectTo,
+    },
   });
   return { data, error };
 }
